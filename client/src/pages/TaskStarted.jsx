@@ -4,7 +4,7 @@ import { TaskCard } from "../context/TaskCard";
 import { ModalTask } from "../components/ModalTask";
 
 export const TaskStarted = () => {
-  const { getTasks, handleOpenModal, modal, tasks, edit } = useTask();
+  const { getTasks, handleOpenModal, modal, tasks, edit,mode } = useTask();
 
   const countTasksStarted = () => {
     return tasks.filter((task) => task.statusTask === false).length;
@@ -21,13 +21,13 @@ export const TaskStarted = () => {
       <div className=" w-full mx-4">
         <div className="flex justify-between  ">
           <div className="">
-            <h1 className="text-5xl font-semibold"> Tareas Iniciadas</h1>
+            <h1 className={` ${mode ? "text-white" :"text-black"} text-5xl font-semibold`}> Tareas Iniciadas</h1>
           </div>
 
           <div className=" flex py-4 w-[50%] ">
             <button
               onClick={handleOpenModal}
-              className="  ml-auto py-2 bg-blue-500 px-8 font-semibold rounded-md active:bg-blue-700"
+              className={` ${mode ? "text-white" :"text-white"}  ml-auto py-2 bg-blue-500 px-8 font-semibold rounded-md active:bg-blue-700`}
             >
               Crear tarea
             </button>

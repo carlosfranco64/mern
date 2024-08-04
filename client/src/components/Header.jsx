@@ -16,16 +16,16 @@ export const Header = () => {
 
 
   return (
-    <div className="bg-zinc-900 w-full h-12 flex justify-between px-4 ">
+    <div className={`${mode ? "text-white" :"text-black"} bg-zinc-900 w-full h-12 flex justify-between px-4 ${mode ? "bg-[#353535]  tex":"bg-[#3333332c] "}`}>
       <div className=" flex my-auto">
       <FaTasks className="h-8 w-8 mr-2" />
-      <span className="text-2xl font-bold">Gestor De Tareas</span>
+      <span className={`text-2xl font-bold  `}>Gestor De Tareas</span>
       </div>
       <div className="my-auto cursor-pointer text-4xl ">
         {mode ? (
-          <MdDarkMode onClick={handleModeDark} />
+          <MdDarkMode className="" onClick={handleModeDark} />
         ) : (
-          <MdOutlineLightMode onClick={handleModeLight} />
+          <MdOutlineLightMode className="" onClick={handleModeLight} />
         )}
       </div>
     </div>

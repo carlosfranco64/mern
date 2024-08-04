@@ -1,32 +1,31 @@
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
+import { useTask } from "../context/TaskContext";
 
 export const Navbar=() => {
 
   const {logout,user}=useAuth()
+  const { mode, handleModeDark, handleModeLight } = useTask();
 
 
   return (
-    <div className="flex h-screen">
-      <div className="bg-zinc-900 text-white w-64 p-6 flex flex-col">
+    <div className={`flex h-screen ${mode ? "bg-[#353535] ":"bg-[#3333332c] "}`}>
+      <div className={`  w-64 p-6 flex flex-col ${mode ? "text-white":"text-black"}`}>
           <div>
             
-        <div className=" items-center mx-auto grid gap-3">
+        <div className="  items-center mx-auto grid gap-3">
          
         <div className="bg-red-500 w-[100px] h-[100px] rounded-full mx-auto flex justify-center items-center">
 
           <h2 className="text-center font-semibold capitalize text-6xl">{user.username.substring(0,1)}</h2>
         </div>
-          
-          <h6 className="block text-center">bienvenido(a) {user.username}</h6>
+            
+          <h6 className={`block text-center`}>bienvenido(a) {user.username}</h6>
         </div>
           </div>
         <nav className="space-y-4 mt-12 grid gap-3">
-          <Link to='/' className="flex items-center" >
-            <HomeIcon className="h-6 w-6 mr-2" />
-            <span>Dashboard</span>
-          </Link>
-          <Link to="/tasks" className="flex items-center" >
+         
+          <Link to="/" className="flex items-center" >
             <InboxIcon className="h-6 w-6 mr-2" />
             <span>Todas las tareas</span>
           </Link>
@@ -38,14 +37,8 @@ export const Navbar=() => {
             <UsersIcon className="h-6 w-6 mr-2" />
             <span>Tareas finalizadas</span>
           </Link>
-          <Link onClick={logout} className="flex items-center" >
-            <ActivityIcon className="h-6 w-6 mr-2" />
-            <span>Buscar tareas</span>
-          </Link>
-          <Link onClick={logout} className="flex items-center" >
-            <SettingsIcon className="h-6 w-6 mr-2" />
-            <span>Configuacion</span>
-          </Link>
+          
+         
           <Link onClick={logout} className="flex items-center active:bg-red-500 rounded-md py-2 px-1" >
             <HandHelpingIcon className="h-6 w-6 mr-2" />
             <span>Cerrar Sesion</span>

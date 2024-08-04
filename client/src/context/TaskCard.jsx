@@ -4,10 +4,10 @@ import { ModalDelete } from "../components/ModalDelete";
 
 export const TaskCard = ({ task }) => {
 
-    const {modalDelete,handleOpenModalDelete,handleOpenModalEdit}=useTask()
+    const {modalDelete,handleOpenModalDelete,handleOpenModalEdit,mode}=useTask()
 
   return (
-    <div className={` ${task.statusTask ? "bg-green-600": "bg-red-600"} rounded-md h-min-[150px] px-5 pt-4  `}>
+    <div className={`${mode ? "text-white":"text-white"} ${task.statusTask ? "bg-green-600": "bg-red-600"} rounded-md h-min-[150px] px-5 pt-4  `}>
       <div className="my-auto flex justify-between mb-2">
         <h1 className="font-bold first-letter:uppercase">{task.title}</h1>
         <div className="flex gap-1 text-2xl">

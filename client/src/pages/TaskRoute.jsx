@@ -16,8 +16,7 @@ export const TaskRoute = () => {
        
 <Routes>
 
-<Route path='/' element={<HomePage/>}/>
-<Route path='/tasks' element={<Tasks/>}/>
+<Route path='/' element={<Tasks/>}/>
 <Route path='/tasksStarted' element={<TaskStarted/>}/>
 <Route path='/TasksFinish' element={<TasksFinish/>}/>
 

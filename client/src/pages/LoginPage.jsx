@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import { useTask } from "../context/TaskContext";
 
 export const LoginPage = () => {
   const {
@@ -12,6 +13,8 @@ export const LoginPage = () => {
 
 
   const { signin, errors:LoginErrors=[], isAuthenticate } = useAuth();
+
+  const {mode}=useTask()
 
   const navigate=useNavigate()
 
@@ -26,13 +29,13 @@ useEffect(() => {
  
   return (
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-      <div className="bg-zinc-800  p-10 rounded-md ">
+      <div className={`${mode ? "bg-zinc-800":"bg-[#3333332c]"}   p-10 rounded-md `}>
         {LoginErrors.map((error, i) => (
           <div key={i} className="px-2 py-2 bg-red-500">
             {error}
           </div>
         ))}
-        <h1 className="font-bold text-2xl">LOGIN</h1>
+        <h1 className={`font-bold text-2xl ${mode ? "text-white":"text-black"}`}>LOGIN</h1>
         <hr className="mb-4" />
 
         <form onSubmit={onSubmit}>
@@ -56,7 +59,7 @@ useEffect(() => {
             Login
           </button>
         </form>
-        <p className="flex gap-x-2 justify-between">
+        <p className={`flex gap-x-2 justify-between  ${mode ? "text-white":"text-black"} `}>
           Don't have an account?{" "}
           <Link className="underline text-sky-500" to="/register">
             Sign up
